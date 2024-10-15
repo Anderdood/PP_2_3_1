@@ -9,14 +9,15 @@ import web.service.CarService;
 
 @Controller
 public class CarController {
-@Autowired
-private CarService carService;
+    @Autowired
+    private CarService carService;
+
     @GetMapping("/cars")
     public String getCars(@RequestParam(value = "count", required = false) Integer count, Model model) {
         if (count == null || count >= 5) {
             model.addAttribute("cars", carService.getAllCars());
-        }else {
-            model.addAttribute("cars",carService.getCars(count));
+        } else {
+            model.addAttribute("cars", carService.getCars(count));
         }
         return "cars";
     }

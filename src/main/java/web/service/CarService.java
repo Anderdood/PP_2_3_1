@@ -18,10 +18,12 @@ public class CarService {
         carList.add(new Car("Chevrolet", "Malibu", 2018));
         carList.add(new Car("Nissan", "Altima", 2022));
     }
-    public List<Car> getAllCars(){
+
+    public List<Car> getAllCars() {
         return carList;
     }
-    public List<Car> getCars(int count){
+
+    public List<Car> getCars(int count) {
         return carList.subList(0, Math.min(count, carList.size()));
     }
 }
