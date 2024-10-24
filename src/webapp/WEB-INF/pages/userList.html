@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User list</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User list</title>
 </head>
 <body>
 <h1>User list</h1>
 <table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="user : ${users}">
-    <td th:text="${user.id}"></td>
-    <td th:text="${user.name}"></td>
-    <td th:text="${user.email}"></td>
-    <td>
-      <form action="/users/update" method="post" style="display:inline;">
-        <input type="hidden" name="id" th:value="${user.id}"/>
-        <input type="text" name="name" th:value="${user.name}"/>
-        <input type="text" name="email" th:value="${user.email}"/>
-        <button type="submit">Update</button>
-      </form>
-      <form action="/users/delete" method="post" style="display:inline;">
-        <input type="hidden" name="id" th:value="${user.id}"/>
-        <button type="submit">Delete</button>
-      </form>
-    </td>
-  </tr>
-  </tbody>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <form action="/users/update" method="post" style="display:inline;">
+                <input type="hidden" name="id" th:value="${user.id}"/>
+                <input type="text" name="name" th:value="${user.name}"/>
+                <input type="text" name="email" th:value="${user.email}"/>
+                <button type="submit">Update</button>
+            </form>
+            <form action="/users/delete" method="post" style="display:inline;">
+                <input type="hidden" name="id" th:value="${user.id}"/>
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
 </table>
 
 <h2>Add User</h2>
 <form action="/users/add" method="post">
-  <input type="text" name="name" placeholder="Name" required/>
-  <input type="email" name="email" placeholder="Email" required/>
-  <button type="submit">Add</button>
+    <input type="text" name="name" placeholder="Name" required/>
+    <input type="email" name="email" placeholder="Email" required/>
+    <button type="submit">Add</button>
 </form>
 </body>
 </html>

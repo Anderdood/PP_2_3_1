@@ -22,14 +22,16 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/users")
-    public String listUsers(Model model){
+    public String listUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "userList";
     }
+
     @PostMapping("/users/add")
-    public String addUser(@RequestParam String name,@RequestParam String email){
-        User user= new User();
+    public String addUser(@RequestParam String name, @RequestParam String email) {
+        User user = new User();
         user.setName(name);
         user.setEmail(email);
         userService.save(user);
@@ -37,17 +39,18 @@ public class UserController {
     }
 
     @PostMapping("/users/update")
-    public String updateUser( @RequestParam Long id,@RequestParam String name, @RequestParam String email){
-        User user=userService.findById(id);
-        if(user!=null){
+    public String updateUser(@RequestParam Long id, @RequestParam String name, @RequestParam String email) {
+        User user = userService.findById(id);
+        if (user != null) {
             user.setName(name);
             user.setEmail(email);
             userService.update(user);
         }
         return "redirect:/users";
     }
+
     @PostMapping("/users/delete")
-    public String userDelete(@RequestParam Long id){
+    public String deleteUser(@RequestParam Long id) {
         userService.delete(id);
         return "redirect:/users";
     }
