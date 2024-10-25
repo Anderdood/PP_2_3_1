@@ -26,13 +26,13 @@ public class UserController {
 
     @PostMapping("/users/add")
     public String addUser(@RequestParam String name, @RequestParam String email) {
-        userService.addUser(name, email);
+        userService.save(name, email);
         return "redirect:/users";
     }
 
     @PostMapping("/users/update")
     public String updateUser(@RequestParam Long id, @RequestParam String name, @RequestParam String email) {
-        userService.modifyUser(id, name, email);
+        userService.update(id, name, email);
         return "redirect:/users";
     }
 
