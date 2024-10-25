@@ -13,7 +13,6 @@ public interface UserService {
 
     public void delete(Long id);
 
-    @Transactional
     void save(String name, String email);
 
     void update(Long id, String name, String email);
