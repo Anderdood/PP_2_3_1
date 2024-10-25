@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
     @Autowired
     public UserServiceImpl(UserDao userDao) {
@@ -45,4 +45,25 @@ public class UserServiceImpl implements UserService {
     public void delete(Long id) {
         userDao.delete(id);
     }
+
+    @Override
+    @Transactional
+    public void addUser(String name, String email) {
+        User user = new User();
+        user.setName(name);
+        user.setEmail(email);
+        save(user);
+    }
+
+    @Transactional
+    @Override
+    public void modifyUser(Long id, String name, String email) {
+        User user = findById(id);
+        if (user != null) {
+            user.setName(name);
+            user.setEmail(email);
+            update(user);
+        }
+    }
+
 }

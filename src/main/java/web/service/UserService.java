@@ -16,4 +16,8 @@ public interface UserService {
 
     public void delete(Long id);
 
+    void addUser(String name, String email);
+
+    void modifyUser(Long id, String name, String email);
+
 }
